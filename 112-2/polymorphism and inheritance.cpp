@@ -52,23 +52,20 @@ protected:
 public:
     double S = 0;
     triangle(double _s1, double _s2, double _s3) : s1(_s1), s2(_s2), s3(_s3) {
-        S = (_s1 + _s2 + _s3) / 2;
-    }
-    double getS1() {
-        return s1;
-    }
-    double getS2() {
-        return s2;
-    }
-    double getS3() {
-        return s3;
+        S = (s1 + s2 + s3) / 2;
     }
     double area() override {
-        return sqrt(S*(S-getS1())*(S-getS2())*(S-getS3()));
+        double ans = S*(S-s1)*(S-s2)*(S-s3);
+        if (ans <= 0) {
+            cout << "cannot construct a triangle, area is ";
+            return 0;
+        }
+        else
+            return sqrt(ans);
     }
     void display() {
         cout << "This is a Triangle" << endl;
-        cout << "Side1 : " << getS1() << " Side2 : " << getS2() << " Side3 : " << getS3() << endl;
+        cout << "Side1 : " << s1 << " Side2 : " << s2 << " Side3 : " << s3 << endl;
     }
 };
 
