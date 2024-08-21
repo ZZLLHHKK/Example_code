@@ -121,7 +121,18 @@ void Reverse() {
     head = prev;
 }
 
-void recurPrint(Node *p) {
+void recurReverse(Node *p) { // use recursion
+    if (p -> next == nullptr) {
+        head = p;
+        return;
+    }
+    recurReverse(p -> next);
+    p -> next -> next = p;
+    p -> next = nullptr;
+}
+
+
+void recurPrint(Node *p) { // use recursion
     if (p == nullptr) {
         cout << "\n";
         return;
@@ -130,7 +141,7 @@ void recurPrint(Node *p) {
     recurPrint(p -> next);
 }
 
-void reversePrint(Node *p) {
+void reversePrint(Node *p) { // use recursion
     if (p == nullptr) 
         return;
     reversePrint(p -> next);
@@ -168,7 +179,7 @@ int main() {
     cout << "\nelement remaining : " << getSize() << endl;
 
     cout << "\nReverse list : " << endl;
-    Reverse();
+    recurReverse(head);
     Print(head);
 
     cout << "\nRecursion Print: " << endl;
