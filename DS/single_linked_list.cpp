@@ -110,6 +110,17 @@ void Print(Node *head) {
     cout << endl;
 }
 
+void Reverse() {
+    Node *cur = head, *next, *prev = nullptr;
+    while (cur != nullptr) {
+        next = cur -> next;
+        cur -> next = prev; //point backward
+        prev = cur;
+        cur = next;
+    }
+    head = prev;
+}
+
 int main() {
     cout << "insert from head : " << endl;
     for (int i = 1; i <= 3; ++i) 
@@ -139,6 +150,10 @@ int main() {
     Print(head);
 
     cout << "\nelement remaining : " << getSize() << endl;
+
+    cout << "\nReverse list : " << endl;
+    Reverse();
+    Print(head);
 }
 
 //Single Linked List
