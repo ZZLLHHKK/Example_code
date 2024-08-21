@@ -121,6 +121,22 @@ void Reverse() {
     head = prev;
 }
 
+void recurPrint(Node *p) {
+    if (p == nullptr) {
+        cout << "\n";
+        return;
+    }
+    cout << p -> data << " ";
+    recurPrint(p -> next);
+}
+
+void reversePrint(Node *p) {
+    if (p == nullptr) 
+        return;
+    reversePrint(p -> next);
+    cout << p -> data << " ";
+}
+
 int main() {
     cout << "insert from head : " << endl;
     for (int i = 1; i <= 3; ++i) 
@@ -154,6 +170,12 @@ int main() {
     cout << "\nReverse list : " << endl;
     Reverse();
     Print(head);
+
+    cout << "\nRecursion Print: " << endl;
+    recurPrint(head);
+
+    cout << "\nReverse Print: " << endl;
+    reversePrint(head);
 }
 
 //Single Linked List
